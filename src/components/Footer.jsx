@@ -1,7 +1,7 @@
 const footerLinks = {
   navigation: [
-    { name: 'Home', href: '#' },
-    { name: 'About', href: '#about' },
+    { name: 'Hero', href: '#hero' },
+    { name: 'Skills', href: '#about' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
   ],
@@ -21,7 +21,7 @@ export default function Footer() {
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           {/* Brand & Copyright */}
           <div className="flex flex-col gap-4">
-            <a href="#" className="text-slate-100 font-semibold text-lg hover:text-accent-teal transition-colors">
+            <a href="#hero" className="text-slate-100 font-semibold text-lg hover:text-accent-teal transition-colors">
               Portfolio
             </a>
             <p className="text-slate-400 text-sm">

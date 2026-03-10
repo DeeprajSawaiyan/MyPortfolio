@@ -13,7 +13,7 @@ const socialLinks = [
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
         <div className="text-center">
           {/* Headline with staggered fade-in */}

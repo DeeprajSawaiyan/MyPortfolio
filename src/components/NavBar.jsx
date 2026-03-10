@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
 const navLinks = [
-  { name: 'Home', href: '#' },
-  { name: 'About', href: '#about' },
+  { name: 'Hero', href: '#hero' },
+  { name: 'Skills', href: '#about' },
   { name: 'Projects', href: '#projects' },
   { name: 'Contact', href: '#contact' },
 ]
@@ -15,7 +15,7 @@ export default function NavBar() {
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 text-slate-100 font-semibold hover:text-accent-blue transition-colors">
+          <a href="#hero" className="flex items-center gap-2 text-slate-100 font-semibold hover:text-accent-blue transition-colors">
             <span className="text-accent-teal">Portfolio</span>
           </a>
 
