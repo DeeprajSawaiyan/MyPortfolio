@@ -1,65 +1,107 @@
+import SectionHeading from './SectionHeading'
+
 const projects = [
   {
     title: 'ChatBot using Spring AI',
-    description:
-      'Engineered a conversational AI chatbot integrating Java apps with LLMs using Prompt Templates and RESTful APIs.',
-    githubUrl: '#',
+    stack: ['Java', 'Spring Boot', 'Spring AI', 'Groq API', 'React'],
+    points: [
+      'Full-stack conversational chatbot connecting a React frontend to LLMs through Spring AI and the Groq API.',
+      "Structured model interactions with Spring AI's ChatClient and reusable prompt templates.",
+      'REST endpoints that accept user queries and return model responses to the UI.',
+      'Deployed on Render with a publicly accessible live demo.',
+    ],
+    githubUrl: 'https://github.com/DeeprajSawaiyan/chatBot_using_SpringAI',
+    liveUrl: 'https://chatbot-ui-htib.onrender.com',
+    sfx: 'Zap!',
   },
   {
-    title: 'AI-Powered Sleep & Health Analysis Platform',
-    description:
-      'Developed responsive health dashboards using HTML, Tailwind CSS, and EJS.',
-    githubUrl: '#',
-  },
-  {
-    title: 'Expense Tracker',
-    description:
-      'Built RESTful APIs with Spring Boot, JWT authentication, and deployed on AWS.',
-    githubUrl: '#',
+    title: 'Expense Tracker API',
+    stack: ['Java', 'Spring Boot', 'Spring Security', 'JWT', 'JPA', 'MySQL', 'PostgreSQL'],
+    points: [
+      'RESTful expense-management API — MySQL locally, PostgreSQL in production on Render.',
+      'Endpoints secured with Spring Security and stateless JWT authentication.',
+      'Pagination and filtering to query large expense lists efficiently.',
+      'Layered architecture with JPA/Hibernate, DTO mapping, request validation and global exception handling.',
+    ],
+    githubUrl: 'https://github.com/DeeprajSawaiyan/ExpenseTrackerApi',
+    liveUrl: 'https://expensetrackerapi-ef5t.onrender.com',
+    sfx: 'Thwip!',
   },
 ]
 
+// Header strip colour per panel
+const panelAccents = ['bg-spidey-red', 'bg-spidey-blue', 'bg-spidey-magenta']
+
+const linkIcon = (
+  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+    />
+  </svg>
+)
+
 export default function Projects() {
   return (
-    <section id="projects" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-      <h2 className="text-2xl font-bold text-slate-100 sm:text-3xl">Projects</h2>
-      <p className="mt-2 text-slate-400">
-        A selection of recent work
-      </p>
+    <section id="projects" className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+      <SectionHeading issue="02" title="Missions" subtitle="Things I've built and shipped." />
 
-      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project) => (
+      <div className="mt-12 grid gap-8 lg:grid-cols-2">
+        {projects.map((project, i) => (
           <article
             key={project.title}
-            className="group flex flex-col rounded-xl border border-navy-700/50 bg-navy-800/40 p-6 shadow-lg shadow-navy-950/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-accent-teal/10 hover:border-accent-teal/30"
+            className="comic-panel group relative flex flex-col bg-paper text-black transition-all duration-200 hover:-translate-y-2 hover:-rotate-1 hover:shadow-comic-red"
           >
-            <h3 className="text-lg font-semibold text-slate-100">
-              {project.title}
-            </h3>
-            <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-400">
-              {project.description}
-            </p>
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 self-start rounded border border-slate-500/60 bg-transparent px-4 py-2 text-sm font-medium text-slate-300 outline-none transition-colors hover:border-accent-teal hover:text-accent-teal focus-visible:ring-2 focus-visible:ring-accent-teal/50"
-            >
-              View on GitHub
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                />
-              </svg>
-            </a>
+            <div className={`halftone relative h-28 overflow-hidden border-b-[3px] border-black text-black/25 ${panelAccents[i % panelAccents.length]}`}>
+              <span className="absolute left-4 top-3 font-comic text-5xl tracking-wider text-white drop-shadow-[3px_3px_0_#000]">
+                #{String(i + 1).padStart(2, '0')}
+              </span>
+              <span className="absolute bottom-3 right-4 rotate-6 border-2 border-black bg-spidey-yellow px-3 py-0.5 font-comic text-2xl tracking-wider text-black shadow-comic-sm transition-transform duration-200 group-hover:scale-110 group-hover:-rotate-3">
+                {project.sfx}
+              </span>
+            </div>
+
+            <div className="flex flex-1 flex-col p-6">
+              <h3 className="font-comic text-3xl leading-tight tracking-wide">
+                {project.title}
+              </h3>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {project.stack.map((tech) => (
+                  <li key={tech} className="border-2 border-black bg-white px-2 py-0.5 text-xs font-semibold">
+                    {tech}
+                  </li>
+                ))}
+              </ul>
+              <ul className="mt-4 flex-1 space-y-2">
+                {project.points.map((point) => (
+                  <li key={point} className="flex gap-2 text-sm leading-relaxed text-neutral-700">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rotate-45 bg-spidey-red" aria-hidden />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border-2 border-black bg-black px-4 py-2 font-comic text-lg tracking-wider text-white shadow-comic-sm outline-none transition-colors hover:bg-spidey-red focus-visible:ring-4 focus-visible:ring-spidey-cyan"
+                >
+                  View on GitHub
+                  {linkIcon}
+                </a>
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border-2 border-black bg-spidey-yellow px-4 py-2 font-comic text-lg tracking-wider text-black shadow-comic-sm outline-none transition-colors hover:bg-spidey-cyan focus-visible:ring-4 focus-visible:ring-spidey-cyan"
+                >
+                  Live Demo
+                  {linkIcon}
+                </a>
+              </div>
+            </div>
           </article>
         ))}
       </div>

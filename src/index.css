@@ -8,6 +8,50 @@ html {
 
 @layer base {
   body {
-    @apply bg-navy-900 text-slate-200 antialiased min-h-screen;
+    @apply bg-ink-900 text-paper antialiased min-h-screen;
+  }
+
+  ::selection {
+    @apply bg-spidey-red text-white;
+  }
+}
+
+@layer components {
+  /* Comic-print halftone dots */
+  .halftone {
+    background-image: radial-gradient(currentColor 1.2px, transparent 1.4px);
+    background-size: 10px 10px;
+  }
+
+  /* Bordered comic panel with a hard offset shadow */
+  .comic-panel {
+    @apply border-[3px] border-black shadow-comic;
+  }
+
+  /* Yellow narration caption box */
+  .caption-box {
+    @apply inline-block -skew-x-6 border-[3px] border-black bg-spidey-yellow px-4 py-1 font-comic tracking-wider text-black shadow-comic-sm;
+  }
+
+  /* Static red/cyan misregistration on headings */
+  .glitch-text {
+    text-shadow: 3px 3px 0 #e4202e, -3px -3px 0 #00e1ff;
+  }
+
+  .btn-comic {
+    @apply inline-flex items-center justify-center gap-2 border-[3px] border-black px-7 py-3 font-comic text-xl tracking-wider shadow-comic transition-all duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:shadow-none;
+  }
+
+  .comic-input {
+    @apply mt-2 block w-full border-[3px] border-black bg-paper px-4 py-3 text-black placeholder-neutral-500 shadow-comic-sm outline-none transition-shadow focus:shadow-comic-red;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-glitch,
+  .animate-fade-in-up,
+  .animate-pop-in {
+    animation: none !important;
+    opacity: 1 !important;
   }
 }

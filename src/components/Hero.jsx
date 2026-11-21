@@ -1,63 +1,90 @@
-const socialLinks = [
-  {
-    name: 'LinkedIn',
-    href: 'https://linkedin.com/in/deepraj-sawaiyan',
-    icon: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z',
-  },
-  {
-    name: 'GitHub',
-    href: 'https://github.com/DeeprajSawaiyan',
-    icon: 'M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z',
-  },
-]
+import { socialLinks } from '../data/socialLinks'
+
+// Spider-web drawn from the top-right corner
+function WebCorner({ className }) {
+  return (
+    <svg className={className} viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
+      <path d="M200 0 L0 0 M200 0 L20 90 M200 0 L60 160 M200 0 L130 200 M200 0 L200 200" />
+      <path d="M160 0 Q172 18 192 32 Q196 36 200 40" />
+      <path d="M110 0 Q130 40 172 66 Q186 74 200 80" />
+      <path d="M60 0 Q90 64 150 106 Q176 118 200 124" />
+      <path d="M10 0 Q48 92 124 150 Q160 170 200 172" />
+    </svg>
+  )
+}
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+    <section id="hero" className="relative flex min-h-[90vh] items-center justify-center overflow-hidden">
+      {/* Comic-print backdrop */}
+      <div className="absolute inset-0 bg-gradient-to-br from-spidey-red-dark/40 via-ink-900 to-spidey-blue/30" aria-hidden />
+      <div className="halftone absolute inset-0 text-spidey-red/25 [mask-image:radial-gradient(ellipse_at_top_left,black,transparent_60%)]" aria-hidden />
+      <div className="halftone absolute inset-0 text-spidey-cyan/20 [mask-image:radial-gradient(ellipse_at_bottom_right,black,transparent_55%)]" aria-hidden />
+      <WebCorner className="absolute right-0 top-0 h-56 w-56 text-white/20 sm:h-80 sm:w-80" />
+      <WebCorner className="absolute bottom-0 left-0 h-48 w-48 rotate-180 text-white/10 sm:h-72 sm:w-72" />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
         <div className="text-center">
-          {/* Headline with staggered fade-in */}
-          <h1
-            className="animate-fade-in-up text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl md:text-6xl lg:text-7xl"
+          <p
+            className="animate-fade-in-up opacity-0"
             style={{ animationDelay: '0ms' }}
           >
-            Hi, I&apos;m{' '}
-            <span className="bg-gradient-to-r from-accent-teal to-accent-blue bg-clip-text text-transparent">
-              Deepraj Sawaiyan
-            </span>
-          </h1>
-          <p
-            className="animate-fade-in-up mt-4 text-xl font-medium text-accent-teal sm:text-2xl"
-            style={{ animationDelay: '150ms' }}
-          >
-            Full-Stack Software Engineer
+            <span className="caption-box text-lg sm:text-xl">Meanwhile, in Jharkhand&hellip;</span>
           </p>
 
-          {/* Subtitle */}
-          <p
-            className="animate-fade-in-up mx-auto mt-6 max-w-2xl text-lg text-slate-400 sm:text-xl"
+          <h1
+            className="animate-fade-in-up opacity-0 mt-6 font-comic text-6xl leading-none tracking-wide text-white sm:text-7xl md:text-8xl lg:text-9xl"
+            style={{ animationDelay: '150ms' }}
+          >
+            <span className="block text-3xl text-neutral-300 sm:text-4xl">Hi, I&apos;m</span>
+            <span className="animate-glitch inline-block">Deepraj Sawaiyan</span>
+          </h1>
+
+          <div
+            className="animate-fade-in-up opacity-0 mt-6 flex flex-wrap items-center justify-center gap-4"
             style={{ animationDelay: '300ms' }}
           >
-            I build robust backend systems and modern web interfaces—turning ideas into
-            scalable, user-centric applications that perform.
-          </p>
+            <span className="inline-block -rotate-1 border-[3px] border-black bg-spidey-red px-5 py-2 font-comic text-2xl tracking-wider text-white shadow-comic sm:text-3xl">
+              Java Full Stack Developer
+            </span>
+            <a
+              href="https://codolio.com/profile/Trouzee"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rotate-3 border-[3px] border-black bg-spidey-yellow px-4 py-1.5 font-comic text-xl tracking-wider text-black shadow-comic-sm transition-transform hover:rotate-0 hover:scale-105"
+            >
+              500+ DSA problems solved!
+            </a>
+          </div>
+
+          {/* Speech bubble */}
+          <div
+            className="animate-fade-in-up opacity-0 relative mx-auto mt-10 max-w-2xl"
+            style={{ animationDelay: '450ms' }}
+          >
+            <p className="relative rounded-[2rem] border-[3px] border-black bg-paper px-6 py-5 text-lg font-medium text-black shadow-comic sm:text-xl">
+              CS graduate from BIT Mesra building secure REST APIs with Java, Spring Boot
+              and Spring Security—plus LLM-powered apps with Spring AI.
+            </p>
+            <span
+              className="absolute -bottom-4 left-1/2 h-6 w-6 -translate-x-1/2 rotate-45 border-b-[3px] border-r-[3px] border-black bg-paper"
+              aria-hidden
+            />
+          </div>
 
           {/* CTAs */}
           <div
-            className="animate-fade-in-up mt-10 flex flex-col sm:flex-row gap-4 justify-center"
-            style={{ animationDelay: '450ms' }}
+            className="animate-fade-in-up opacity-0 mt-14 flex flex-col justify-center gap-5 sm:flex-row"
+            style={{ animationDelay: '600ms' }}
           >
-            <a
-              href="#projects"
-              className="rounded-lg bg-accent-teal px-8 py-4 text-base font-semibold text-navy-900 shadow-lg shadow-accent-teal/25 hover:bg-accent-teal-light transition-all duration-200 hover:shadow-accent-teal/40 hover:-translate-y-0.5"
-            >
+            <a href="#projects" className="btn-comic bg-spidey-red text-white hover:shadow-comic-cyan">
               View Projects
             </a>
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg border-2 border-navy-700 bg-navy-800/50 px-8 py-4 text-base font-semibold text-slate-200 backdrop-blur-sm hover:border-accent-blue hover:text-accent-blue transition-all duration-200"
+              className="btn-comic bg-paper text-black hover:shadow-comic-red"
             >
               Download Resume
             </a>
@@ -65,8 +92,8 @@ export default function Hero() {
 
           {/* Social Icons */}
           <div
-            className="animate-fade-in-up mt-12 flex justify-center gap-6"
-            style={{ animationDelay: '600ms' }}
+            className="animate-fade-in-up opacity-0 mt-12 flex justify-center gap-5"
+            style={{ animationDelay: '750ms' }}
           >
             {socialLinks.map((item) => (
               <a
@@ -74,10 +101,10 @@ export default function Hero() {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-400 transition-all duration-200 hover:text-accent-teal hover:scale-110"
+                className="flex h-12 w-12 items-center justify-center rounded-full border-[3px] border-black bg-paper text-black shadow-comic-sm transition-all duration-150 hover:-translate-y-1 hover:bg-spidey-yellow"
                 aria-label={item.name}
               >
-                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d={item.icon} />
                 </svg>
               </a>
